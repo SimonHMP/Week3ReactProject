@@ -1,20 +1,14 @@
 import React, { Component } from "react";
+import Boxes from "./Boxes";
 
 export default class Fetcher extends Component {
-  state = {
-    recentBlogPost: {
-      title: "",
-      link: ""
-    }
-  };
-
   FetchDataFromRssFeed() {
     fetch(
-      "https://api.rss2json.com/v1/api.json?rss_url=https://positivelypositive.com/feed "
+      "https://api.rss2json.com/v1/api.json?rss_url=https://positivelypositive.com/feed"
     )
       .then(response => response.json())
       .then(json => {
-        console.log(json["items"][0]);
+        console.log(json["items"][0]["link"]);
 
         /*this.setState({recentBlogPost['title']: json['items']['title'],
           recentBlogPost['link'] : json['items']['link']
@@ -32,16 +26,14 @@ export default class Fetcher extends Component {
   render() {
     return (
       <div>
-        Check out our blog:{" "}
-        <a target="_blank" href={this.state.recentBlogPost.url}>
-          {this.state.recentBlogPost.name}
-        </a>
+        <Boxes link={"json['items][0]['link']"} />
       </div>
     );
   }
 }
+
 // lala
-/*
+/* src={this.json["items"][0]}
 export default class Fetcher extends Component {
   componentDidMount() {
     const api_key = "58d084913ad74f8a82035282483e24d3";

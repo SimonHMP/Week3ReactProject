@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Boxes from "./components/boxes";
+import Boxes from "./components/Boxes";
 import Fetcher from "./components/Fetcher";
 
 function App() {
