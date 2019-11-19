@@ -40,7 +40,7 @@ export default class Fetcher extends Component {
     );
   }
 }
-
+// lala
 /*
 export default class Fetcher extends Component {
   componentDidMount() {
