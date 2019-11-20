@@ -53,6 +53,10 @@ export default class Fetcher extends Component {
     }
   }
 
+  imageGetter = () => {};
+  //this.setState({ images: images.sort() });
+  //};
+
   render() {
     //console.log("render of fetcher", this.state);
     return (
@@ -62,6 +66,7 @@ export default class Fetcher extends Component {
             title={article.title}
             author={article.author}
             src={this.state.images[index]}
+            imageGetter={this.imageGetter()}
           />
         ))}
       </div>
