@@ -5,3 +5,10 @@
   transform-origin: right top;
   padding: 15%;
 }
+
+.componentImage {
+  height: 350px;
+  width: 350px;
+
+  align-content: space-between;
+}

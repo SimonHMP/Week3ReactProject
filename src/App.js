@@ -11,9 +11,7 @@ function App() {
         <div className="HorizontalScroller">
           <Fetcher />
         </div>
-        <div>
-          <Fetcher />
-        </div>
+        <div></div>
       </header>
     </div>
   );
