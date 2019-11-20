@@ -1,0 +1,7 @@
+.Searchbar {
+  border: 5px outset rgba(211, 153, 51, 0.63);
+  height: 50px;
+  width: 70%;
+  padding: 5px;
+  position: relative;
+}
