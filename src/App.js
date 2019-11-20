@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="HorizontalScroller">
-          <Boxes id="box1" />
-          <Boxes id="box2" />
-          <Boxes id="box3" />
+          <Fetcher />
         </div>
         <div>
           <Fetcher />

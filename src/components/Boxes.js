@@ -4,7 +4,12 @@ export default class Boxes extends Component {
   render() {
     return (
       <div className="articleBox">
-        <img src={this.props.link} />
+        <div>
+          Title: {this.props.title}
+          <span> &nbsp; </span> Author: {this.props.author}
+          <span> &nbsp; </span>
+          {this.props.thumbnail}
+        </div>
       </div>
     );
   }
