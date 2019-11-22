@@ -1,20 +1,44 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { Component } from "react";
 import "./App.css";
-import Boxes from "./components/Boxes";
+
 import Fetcher from "./components/Fetcher";
+import { Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="HorizontalScroller">
-          <Fetcher />
-        </div>
-        <div></div>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = { reload: false };
+  newArticles = () => {
+    this.setState({
+      reload: true
+    });
+  };
+  done = () => {
+    this.setState({
+      reload: false
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div>
+            <button onClick={this.newArticles} className="buttoner">
+              Click me
+            </button>
+          </div>
+          <div className="HorizontalScroller">
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <Fetcher test={this.state.reload} done={this.done} />
+              )}
+            />
+            {/* <Route  path="/article/:id" component={DetailImg} /> */}
+          </div>
+          <div></div>
+        </header>
+      </div>
+    );
+  }
 }
-
-export default App;

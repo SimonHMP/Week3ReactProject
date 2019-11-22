@@ -5,7 +5,8 @@ import "./boxes.css";
 export default class Fetcher extends Component {
   state = {
     articles: [],
-    images: []
+    images: [],
+    urls: []
   };
   FetchDataFromRssFeed() {
     fetch(
@@ -13,17 +14,16 @@ export default class Fetcher extends Component {
     )
       .then(response => response.json())
       .then(json => {
-        //const articleArray = [];
-        //json.forEach(el => {
-        //articleArray.push(el);
-        //});
-        //this.state.articles.push(articleArray);
-        this.setState({ articles: json["items"].splice(1, 3) });
-        //.splice(0, 3)
-        //console.log(this.state.articles[0]["title"]);
-        //let nestedArray = this.state.articles;
-        //let nestedArray = this.state.articles.map(el => {});
-        // console.log(nestedArray);
+        //console.log(json["items"][0]["link"]);
+        let links = [];
+        json["items"].map(item => {
+          links.push(item.link);
+        });
+
+        this.setState({ articles: json["items"].splice(1, 10), urls: links });
+        //console.log(this.state.urls);
+        //console.log(this.state.articles);
+        //console.log(json['items']
       });
   }
 
@@ -40,7 +40,7 @@ export default class Fetcher extends Component {
         //console.log(newUrls);
         this.setState({ images: newUrls });
 
-        console.log(this.state.images);
+        //console.log(this.state.images);
       });
   }
 
@@ -52,13 +52,18 @@ export default class Fetcher extends Component {
       this.FetchImage();
     }
   }
+  clickForMessage = () => {
+    console.log("hello");
+  };
 
-  imageGetter = () => {};
+  //imageGetter = () => {};
   //this.setState({ images: images.sort() });
   //};
 
   render() {
-    //console.log("render of fetcher", this.state);
+    console.log("render of fetcher", this.props);
+    //if props.test == true -> FetchImage() , call this.props.done
+
     return (
       <div>
         {this.state.articles.map((article, index) => (
@@ -66,7 +71,7 @@ export default class Fetcher extends Component {
             title={article.title}
             author={article.author}
             src={this.state.images[index]}
-            imageGetter={this.imageGetter()}
+            link={this.state.urls[index + 1]}
           />
         ))}
       </div>
@@ -75,32 +80,3 @@ export default class Fetcher extends Component {
 }
 
 // lala {this.state.articles["categories"]}    <img src={this.props.link} />
-/* src={this.json["items"][0]}
-export default class Fetcher extends Component {
-  componentDidMount() {
-    const api_key = "58d084913ad74f8a82035282483e24d3";
-
-    return fetch(
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=${api_key}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-
-        const goodNews = data.articles.filter(element => {
-          if (element.content === null) return false;
-
-          return element.content.toLowerCase().includes("good");
-        });
-
-        console.log(goodNews);
-      });
-  }
-
-  render() {
-    return null;
-  }
-}
-
-//58d084913ad74f8a82035282483e24d3
-*/
